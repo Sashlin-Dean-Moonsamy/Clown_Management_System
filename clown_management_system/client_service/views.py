@@ -5,7 +5,7 @@ from .utils import check_authentication
 from .models import Client, ClientSchema, db
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite3'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://username:password@hostname/database'
 
 client_schema = ClientSchema()
 clients_schema = ClientSchema(many=True)
