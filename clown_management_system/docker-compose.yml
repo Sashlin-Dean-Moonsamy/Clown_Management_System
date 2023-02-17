@@ -1,0 +1,42 @@
+version: '2.15.1'
+
+services:
+  db:
+    image: postgres:12
+    environment:
+      POSTGRES_USER: clown_user
+      POSTGRES_PASSWORD: clown_password
+      POSTGRES_DB: clown_db
+    ports:
+      - "5432:5432"
+
+  authentication_service:
+    build: ./authentication_service
+    ports:
+      - "5001:5000"
+    environment:
+      FLASK_APP: app.py
+      FLASK_ENV: development
+      DATABASE_URL: postgres://clown_user:clown_password@db:5432/clown_db
+    depends_on:
+      - db
+  client_service:
+    build: ./client_service
+    ports:
+      - "5002:5000"
+    environment:
+      FLASK_APP: app.py
+      FLASK_ENV: development
+      DATABASE_URL: postgres://clown_user:clown_password@db:5432/clown_db
+    depends_on:
+      - db
+  troupe_leader_service:
+    build: ./troupe_leader_service
+    ports:
+      - "5003:5000"
+    environment:
+      FLASK_APP: app.py
+      FLASK_ENV: development
+      DATABASE_URL: postgres://clown_user:clown_password@db:5432/clown_db
+    depends_on:
+      - db
