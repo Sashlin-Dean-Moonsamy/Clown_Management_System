@@ -4,7 +4,7 @@ from .utils import check_authentication
 from .models import db, Clown
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite3'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://username:password@hostname/database'
 app.config['CLIENTS_SERVICE_URL'] = 'http://localhost:5000'
 current_app.config['Troup_Leader_SERVICE_URL'] = 'http://localhost:5000'
 db.init_app(app)
