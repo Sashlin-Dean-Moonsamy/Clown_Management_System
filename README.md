@@ -1,5 +1,5 @@
 # Clown_Management_System
-A clown management system built with microservices
+A clown management system built with flask microservices
 
 
 Microservices:
