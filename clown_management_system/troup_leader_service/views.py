@@ -4,7 +4,7 @@ from .models import Appointment, db
 from .utils import check_authentication
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite3'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://username:password@hostname/database'
 db.init_app(app)
 
 
